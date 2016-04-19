@@ -1,0 +1,4 @@
+1-Add in a reference frame for the object (see bottom corner of blender)
+2-Write a python script to read .obj files in order to extract a wireframe
+3-Use the file reading stucture to draw an object from a specific file in the same directory hardcoded in
+4-Write code to allow drag and drop of a file, color selection, better ui, faces+shading, compile as a standalone executable etc. after core program is complete
