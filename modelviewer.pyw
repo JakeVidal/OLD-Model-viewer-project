@@ -75,6 +75,7 @@ root.update()
 pg.display.init()
 screen = pg.display.set_mode((width,height))
 
+# Main animation loop
 while 1:
 
 	# Update  screen background
