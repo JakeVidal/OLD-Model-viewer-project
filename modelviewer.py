@@ -42,10 +42,11 @@ line11pt2 = (100, -100, 100)
 line12pt1 = (-100, 100, 100)
 line12pt2 = (-100, -100, 100)
 
-# OBJ class definition from file
+# OBJ class definition from reading file
 class OBJ:
     def __init__(self, fname):
         self.verticies = []
+        self.faces = []
         self.filename = fname
 
     def read_file(self):
@@ -55,9 +56,18 @@ class OBJ:
     		if data[0] == 'v':
     			v = data[1], data[2], data[3]
     			self.verticies.append(v)
+    		if data[0] == 'f':
+    			f = []
+    			data.pop(0)
+    			for point in data:
+    				f.append(point)
+    			self.faces.append(f)
 
     def read_verticies(self):
     	return self.verticies
+
+    def read_faces(self):
+    	return self.faces
 
 # Define rotation functions
 def rotate_point_yaxis(xcoord, ycoord, zcoord, theta):
@@ -101,6 +111,14 @@ screen = pg.display.set_mode((width,height))
 obj = OBJ('usethis.obj')
 obj.read_file()
 
+# For loop that iterates through verticies
+for point in obj.read_verticies():
+	print(point)
+
+# For loop that iterates through faces
+for point in obj.read_faces():
+	print(point)
+
 # Main animation loop
 while 1:
 
@@ -111,10 +129,6 @@ while 1:
 	thetay = m.radians(sliderx.get())
 	thetax = m.radians(slidery.get())
 	thetaz = m.radians(sliderz.get())
-
-	# For loop that iterates through verticies
-	for point in obj.read_verticies():
-		print(point[0] + ',' + point[1] + ',' + point[2])
 
 	# Rotate points on x, y and z axis
 	newline1pt1 = rotate_point_xyz(line1pt1[0], line1pt1[1], line1pt1[2], thetax, thetay, thetaz)
