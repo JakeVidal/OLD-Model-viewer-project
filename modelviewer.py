@@ -54,7 +54,7 @@ class OBJ:
     		if line.startswith('#'): continue
     		data = line.split()
     		if data[0] == 'v':
-    			v = data[1], data[2], data[3]
+    			v = [data[1], data[2], data[3]]
     			self.verticies.append(v)
     		if data[0] == 'f':
     			f = []
@@ -111,14 +111,6 @@ screen = pg.display.set_mode((width,height))
 obj = OBJ('usethis.obj')
 obj.read_file()
 
-# For loop that iterates through verticies
-for point in obj.read_verticies():
-	print(point)
-
-# For loop that iterates through faces
-for point in obj.read_faces():
-	print(point)
-
 # Main animation loop
 while 1:
 
@@ -129,6 +121,11 @@ while 1:
 	thetay = m.radians(sliderx.get())
 	thetax = m.radians(slidery.get())
 	thetaz = m.radians(sliderz.get())
+
+	# For loop that iterates through verticies and rotates them in 3D space
+	rotated_verticies = []
+	for vertex in obj.read_verticies():
+		rotated_verticies.append(rotate_point_xyz(float(vertex[0]), float(vertex[1]), float(vertex[2]), thetax, thetay, thetaz))
 
 	# Rotate points on x, y and z axis
 	newline1pt1 = rotate_point_xyz(line1pt1[0], line1pt1[1], line1pt1[2], thetax, thetay, thetaz)
