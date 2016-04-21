@@ -6,42 +6,6 @@ import os
 # Global variables
 width, height, center = 640, 360, (320, 180)
 
-line1pt1 = (-100, 100, -100)
-line1pt2 = (100, 100, -100)
-
-line2pt1 = (100, 100, -100)
-line2pt2 = (100, 100, 100)
-
-line3pt1 = (100, 100, 100)
-line3pt2 = (-100, 100, 100)
-
-line4pt1 = (-100, 100, 100)
-line4pt2 = (-100, 100, -100)
-
-line5pt1 = (-100, -100, -100)
-line5pt2 = (100, -100, -100)
-
-line6pt1 = (100, -100, -100)
-line6pt2 = (100, -100, 100)
-
-line7pt1 = (100, -100, 100)
-line7pt2 = (-100, -100, 100)
-
-line8pt1 = (-100, -100, 100)
-line8pt2 = (-100, -100, -100)
-
-line9pt1 = (-100, 100, -100)
-line9pt2 = (-100, -100, -100)
-
-line10pt1 = (100, 100, -100)
-line10pt2 = (100, -100, -100)
-
-line11pt1 = (100, 100, 100)
-line11pt2 = (100, -100, 100)
-
-line12pt1 = (-100, 100, 100)
-line12pt2 = (-100, -100, 100)
-
 # OBJ class definition from reading file
 class OBJ:
     def __init__(self, fname):
@@ -127,46 +91,13 @@ while 1:
 	for vertex in obj.read_verticies():
 		rotated_verticies.append(rotate_point_xyz(float(vertex[0]), float(vertex[1]), float(vertex[2]), thetax, thetay, thetaz))
 
-	# Rotate points on x, y and z axis
-	newline1pt1 = rotate_point_xyz(line1pt1[0], line1pt1[1], line1pt1[2], thetax, thetay, thetaz)
-	newline2pt1 = rotate_point_xyz(line2pt1[0], line2pt1[1], line2pt1[2], thetax, thetay, thetaz)
-	newline3pt1 = rotate_point_xyz(line3pt1[0], line3pt1[1], line3pt1[2], thetax, thetay, thetaz)
-	newline4pt1 = rotate_point_xyz(line4pt1[0], line4pt1[1], line4pt1[2], thetax, thetay, thetaz)
-	newline5pt1 = rotate_point_xyz(line5pt1[0], line5pt1[1], line5pt1[2], thetax, thetay, thetaz)
-	newline6pt1 = rotate_point_xyz(line6pt1[0], line6pt1[1], line6pt1[2], thetax, thetay, thetaz)
-	newline7pt1 = rotate_point_xyz(line7pt1[0], line7pt1[1], line7pt1[2], thetax, thetay, thetaz)
-	newline8pt1 = rotate_point_xyz(line8pt1[0], line8pt1[1], line8pt1[2], thetax, thetay, thetaz)
-	newline9pt1 = rotate_point_xyz(line9pt1[0], line9pt1[1], line9pt1[2], thetax, thetay, thetaz)
-	newline10pt1 = rotate_point_xyz(line10pt1[0], line10pt1[1], line10pt1[2], thetax, thetay, thetaz)
-	newline11pt1 = rotate_point_xyz(line11pt1[0], line11pt1[1], line11pt1[2], thetax, thetay, thetaz)
-	newline12pt1 = rotate_point_xyz(line12pt1[0], line12pt1[1], line12pt1[2], thetax, thetay, thetaz)
-
-	newline1pt2 = rotate_point_xyz(line1pt2[0], line1pt2[1], line1pt2[2], thetax, thetay, thetaz)
-	newline2pt2 = rotate_point_xyz(line2pt2[0], line2pt2[1], line2pt2[2], thetax, thetay, thetaz)
-	newline3pt2 = rotate_point_xyz(line3pt2[0], line3pt2[1], line3pt2[2], thetax, thetay, thetaz)
-	newline4pt2 = rotate_point_xyz(line4pt2[0], line4pt2[1], line4pt2[2], thetax, thetay, thetaz)
-	newline5pt2 = rotate_point_xyz(line5pt2[0], line5pt2[1], line5pt2[2], thetax, thetay, thetaz)
-	newline6pt2 = rotate_point_xyz(line6pt2[0], line6pt2[1], line6pt2[2], thetax, thetay, thetaz)
-	newline7pt2 = rotate_point_xyz(line7pt2[0], line7pt2[1], line7pt2[2], thetax, thetay, thetaz)
-	newline8pt2 = rotate_point_xyz(line8pt2[0], line8pt2[1], line8pt2[2], thetax, thetay, thetaz)
-	newline9pt2 = rotate_point_xyz(line9pt2[0], line9pt2[1], line9pt2[2], thetax, thetay, thetaz)
-	newline10pt2 = rotate_point_xyz(line10pt2[0], line10pt2[1], line10pt2[2], thetax, thetay, thetaz)
-	newline11pt2 = rotate_point_xyz(line11pt2[0], line11pt2[1], line11pt2[2], thetax, thetay, thetaz)
-	newline12pt2 = rotate_point_xyz(line12pt2[0], line12pt2[1], line12pt2[2], thetax, thetay, thetaz)
-
-	# Draw lines
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline1pt1[0], center[1]+newline1pt1[1]), (center[0]+newline1pt2[0], center[1]+newline1pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline2pt1[0], center[1]+newline2pt1[1]), (center[0]+newline2pt2[0], center[1]+newline2pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline3pt1[0], center[1]+newline3pt1[1]), (center[0]+newline3pt2[0], center[1]+newline3pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline4pt1[0], center[1]+newline4pt1[1]), (center[0]+newline4pt2[0], center[1]+newline4pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline5pt1[0], center[1]+newline5pt1[1]), (center[0]+newline5pt2[0], center[1]+newline5pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline6pt1[0], center[1]+newline6pt1[1]), (center[0]+newline6pt2[0], center[1]+newline6pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline7pt1[0], center[1]+newline7pt1[1]), (center[0]+newline7pt2[0], center[1]+newline7pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline8pt1[0], center[1]+newline8pt1[1]), (center[0]+newline8pt2[0], center[1]+newline8pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline9pt1[0], center[1]+newline9pt1[1]), (center[0]+newline9pt2[0], center[1]+newline9pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline10pt1[0], center[1]+newline10pt1[1]), (center[0]+newline10pt2[0], center[1]+newline10pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline11pt1[0], center[1]+newline11pt1[1]), (center[0]+newline11pt2[0], center[1]+newline11pt2[1]), 5)
-	pg.draw.line(screen, (0, 255, 0), (center[0]+newline12pt1[0], center[1]+newline12pt1[1]), (center[0]+newline12pt2[0], center[1]+newline12pt2[1]), 5)
+	# For loop that draws a wireframe of the object
+	for face in obj.read_faces():
+		i = 0
+		while i < len(face) - 1:
+			pg.draw.line(screen, (0, 255, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[i+1])-1][0], center[1]+rotated_verticies[int(face[i+1])-1][1]), 5)
+			i = i + 1
+		pg.draw.line(screen, (0, 255, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[0])-1][0], center[1]+rotated_verticies[int(face[0])-1][1]), 5)
 
 	# Update pygame display
 	pg.display.flip()
