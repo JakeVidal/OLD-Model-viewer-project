@@ -72,7 +72,7 @@ pg.display.init()
 screen = pg.display.set_mode((width,height))
 
 # Initialize OBJ object
-obj = OBJ('usethis.obj')
+obj = OBJ('usethis2.obj')
 obj.read_file()
 
 # Main animation loop
@@ -95,9 +95,9 @@ while 1:
 	for face in obj.read_faces():
 		i = 0
 		while i < len(face) - 1:
-			pg.draw.line(screen, (0, 255, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[i+1])-1][0], center[1]+rotated_verticies[int(face[i+1])-1][1]), 5)
+			pg.draw.line(screen, (0, 255, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[i+1])-1][0], center[1]+rotated_verticies[int(face[i+1])-1][1]), 1)
 			i = i + 1
-		pg.draw.line(screen, (0, 255, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[0])-1][0], center[1]+rotated_verticies[int(face[0])-1][1]), 5)
+		pg.draw.line(screen, (0, 255, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[0])-1][0], center[1]+rotated_verticies[int(face[0])-1][1]), 1)
 
 	# Update pygame display
 	pg.display.flip()
