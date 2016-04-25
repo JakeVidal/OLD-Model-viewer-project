@@ -1,0 +1,1 @@
+This program, written in python v3.5.1 functions as a model viewer for files of the .obj format. A file named 'usethis' placed in the same directory as the application will be read and displayed in a wireframe. Once displayed the model is easily rotated using three sliders, one for each axis.
