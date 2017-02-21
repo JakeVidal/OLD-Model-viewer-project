@@ -1,4 +1,4 @@
-import tkinter as tk
+import Tkinter as tk
 import pygame as pg
 import math as m
 import os
