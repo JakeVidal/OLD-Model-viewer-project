@@ -1,3 +1,4 @@
-1-add size scaling for the model
-2-Add in a reference frame for the object (see bottom corner of blender)
-3-Write code to allow drag and drop of a file, color selection, better ui, faces+shading, compile as a standalone executable etc. after core program is complete
+1 - Add size scaling for the model
+2 - Add in a reference frame for the object (see bottom corner of blender)
+3 - Write code to allow drag and drop of a file to load the model
+4 - Add color selection
