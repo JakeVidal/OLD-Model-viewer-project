@@ -2,6 +2,7 @@ import Tkinter as tk
 import pygame as pg
 import math as m
 import random as r
+from operator import add
 import os
 
 # Global variables
@@ -79,7 +80,7 @@ pg.display.init()
 screen = pg.display.set_mode((width,height))
 
 # Initialize OBJ object
-obj = OBJ('usethis.obj')
+obj = OBJ('usethis2.obj')
 obj.read_file()
 
 # Main animation loop
@@ -116,11 +117,13 @@ while 1:
         i = i + 1
     draw_order.sort()
 
-    # For loop that draws the faces and perimeter lines of the object
+    # Generate the color of the object
     if first_iteration:
         color_list = []
         for i in range(len(face_list)):
-          color_list.append((r.randint(0,255), r.randint(0,255), r.randint(0,255)))
+          color_list.append((10+r.randint(0,100), 155+r.randint(0,100), 10+r.randint(0,100)))
+
+    # For loop that draws the faces and perimeter lines of the object
     for element in draw_order:
         face = face_list[element[1]]
         point_list = []
