@@ -80,7 +80,7 @@ pg.display.init()
 screen = pg.display.set_mode((width,height))
 
 # Initialize OBJ object
-obj = OBJ('usethis2.obj')
+obj = OBJ('usethis3.obj')
 obj.read_file()
 
 # Main animation loop
