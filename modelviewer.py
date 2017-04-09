@@ -102,16 +102,16 @@ while 1:
     for vertex in scaled_verticies:
         rotated_verticies.append(rotate_point_xyz(float(vertex[0]), float(vertex[1]), float(vertex[2]), thetax, thetay, thetaz))
 
-    # # For loop that chooses the correct order to draw the faces of the object to prevent overlap
-    # i = 0
-    # draw_order = []
-    # for face in obj.read_faces():
-    #     min_z_value = 1000000000
-    #     for vertex in face:
-    #         if rotated_verticies[int(vertex)][2] < min_z_value: min_z_value = rotated_verticies[int(vertex)][2]
-    #     draw_order.append([min_z_value, i])
-    #     i = i + 1
-    # draw_order.sort()
+    # For loop that chooses the correct order to draw the faces of the object to prevent overlap
+    i = 0
+    draw_order = []
+    for face in obj.read_faces():
+        min_z_value = 1000000000
+        for vertex in face:
+            if rotated_verticies[int(vertex)-1][2] < min_z_value: min_z_value = rotated_verticies[int(vertex)-1][2]
+        draw_order.append([min_z_value, i])
+        i = i + 1
+    draw_order.sort()
 
     # # For loop that draws a wireframe of the object
     # for face in draw_order:
