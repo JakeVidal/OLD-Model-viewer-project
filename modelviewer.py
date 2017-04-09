@@ -1,10 +1,12 @@
 import Tkinter as tk
 import pygame as pg
 import math as m
+import random as r
 import os
 
 # Global variables
-width, height, center = 640, 360, (320, 180)
+width, height, center = 1280, 720, (640, 360)
+first_iteration = True
 
 # OBJ class definition from reading file
 class OBJ:
@@ -63,7 +65,7 @@ slidery = tk.Scale(root, from_=-180, to=180, orient=tk.HORIZONTAL, label='Y-axis
 slidery.pack(side=tk.RIGHT)
 sliderx = tk.Scale(root, from_=-180, to=180, orient=tk.HORIZONTAL, label='X-axis')
 sliderx.pack(side=tk.RIGHT)
-sliderf = tk.Scale(root, from_=1, to=1000, orient=tk.HORIZONTAL, label='Scale factor')
+sliderf = tk.Scale(root, from_=1, to=500, orient=tk.HORIZONTAL, label='Scale factor')
 sliderf.pack(side=tk.RIGHT)
 
 # Tell pygame's SDL window which window ID to use    
@@ -105,7 +107,8 @@ while 1:
     # For loop that chooses the correct order to draw the faces of the object to prevent overlap
     i = 0
     draw_order = []
-    for face in obj.read_faces():
+    face_list = obj.read_faces()
+    for face in face_list:
         min_z_value = 1000000000
         for vertex in face:
             if rotated_verticies[int(vertex)-1][2] < min_z_value: min_z_value = rotated_verticies[int(vertex)-1][2]
@@ -113,23 +116,23 @@ while 1:
         i = i + 1
     draw_order.sort()
 
-    # # For loop that draws a wireframe of the object
-    # for face in draw_order:
-    #     obj.read_faces()[face[1]]
-
-    #draw faces and wireframe without overlap - algorithm
-    # 1 - for each face, find the lowest z value of any of the verticies within the face, then add the faces to a list in order from lowest z value to highest
-    # 2 - draw the faces then their wireframe border in the order specified by the list
-
-    for face in obj.read_faces():
-        i = 0
-        while i < len(face) - 1:
-            pg.draw.line(screen, (0, 0, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[i+1])-1][0], center[1]+rotated_verticies[int(face[i+1])-1][1]), 3)
-            i = i + 1
-        pg.draw.line(screen, (0, 0, 0), (center[0]+rotated_verticies[int(face[i])-1][0], center[1]+rotated_verticies[int(face[i])-1][1]), (center[0]+rotated_verticies[int(face[0])-1][0], center[1]+rotated_verticies[int(face[0])-1][1]), 3)
+    # For loop that draws the faces and perimeter lines of the object
+    if first_iteration:
+        color_list = []
+        for i in range(len(face_list)):
+          color_list.append((r.randint(0,255), r.randint(0,255), r.randint(0,255)))
+    for element in draw_order:
+        face = face_list[element[1]]
+        point_list = []
+        for vertex in face:
+            point_list.append((center[0]+rotated_verticies[int(vertex)-1][0], center[1]+rotated_verticies[int(vertex)-1][1]))
+        pg.draw.polygon(screen, color_list[element[1]], point_list)
+        pg.draw.lines(screen, (0, 0, 0), True, point_list, 3)
 
     # Update pygame display
     pg.display.flip()
 
     # Update the Tk display
     root.update()
+
+    first_iteration = False
