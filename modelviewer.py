@@ -8,6 +8,9 @@ import os
 # Global variables
 width, height, center = 1280, 720, (640, 360)
 first_iteration = True
+xref_point = (50, 0, 0)
+yref_point = (0, -50, 0)
+zref_point = (0, 0, 50)
 
 # OBJ class definition from reading file
 class OBJ:
@@ -80,7 +83,7 @@ pg.display.init()
 screen = pg.display.set_mode((width,height))
 
 # Initialize OBJ object
-obj = OBJ('usethis3.obj')
+obj = OBJ('usethis2.obj')
 obj.read_file()
 
 # Main animation loop
@@ -131,6 +134,14 @@ while 1:
             point_list.append((center[0]+rotated_verticies[int(vertex)-1][0], center[1]+rotated_verticies[int(vertex)-1][1]))
         pg.draw.polygon(screen, color_list[element[1]], point_list)
         pg.draw.lines(screen, (0, 0, 0), True, point_list, 3)
+
+    # Draw x, y and z axis reference
+    x_point = rotate_point_xyz(xref_point[0], xref_point[1], xref_point[2], thetax, thetay, thetaz)
+    y_point = rotate_point_xyz(yref_point[0], yref_point[1], yref_point[2], thetax, thetay, thetaz)
+    z_point = rotate_point_xyz(zref_point[0], zref_point[1], zref_point[2], thetax, thetay, thetaz)
+    pg.draw.line(screen, (255, 0, 0), (75, height-75), (75+x_point[0], height-75+x_point[1]), 5)
+    pg.draw.line(screen, (0, 255, 0), (75, height-75), (75+y_point[0], height-75+y_point[1]), 5)
+    pg.draw.line(screen, (0, 0, 255), (75, height-75), (75+z_point[0], height-75+z_point[1]), 5)
 
     # Update pygame display
     pg.display.flip()
