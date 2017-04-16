@@ -139,9 +139,10 @@ while 1:
     x_point = rotate_point_xyz(xref_point[0], xref_point[1], xref_point[2], thetax, thetay, thetaz)
     y_point = rotate_point_xyz(yref_point[0], yref_point[1], yref_point[2], thetax, thetay, thetaz)
     z_point = rotate_point_xyz(zref_point[0], zref_point[1], zref_point[2], thetax, thetay, thetaz)
-    pg.draw.line(screen, (255, 0, 0), (75, height-75), (75+x_point[0], height-75+x_point[1]), 5)
-    pg.draw.line(screen, (0, 255, 0), (75, height-75), (75+y_point[0], height-75+y_point[1]), 5)
-    pg.draw.line(screen, (0, 0, 255), (75, height-75), (75+z_point[0], height-75+z_point[1]), 5)
+    pg.draw.line(screen, (255, 0, 0), (75, height-75), (75+x_point[0], height-75+x_point[1]), 3)
+    pg.draw.line(screen, (0, 255, 0), (75, height-75), (75+y_point[0], height-75+y_point[1]), 3)
+    pg.draw.line(screen, (0, 0, 255), (75, height-75), (75+z_point[0], height-75+z_point[1]), 3)
+    pg.draw.circle(screen, (255, 255, 255), (75, height-75), 3)
 
     # Update pygame display
     pg.display.flip()
