@@ -125,6 +125,7 @@ while 1:
         color_list = []
         for i in range(len(face_list)):
           color_list.append((10+r.randint(0,100), 155+r.randint(0,100), 10+r.randint(0,100)))
+        first_iteration = False
 
     # For loop that draws the faces and perimeter lines of the object
     for element in draw_order:
@@ -149,5 +150,3 @@ while 1:
 
     # Update the Tk display
     root.update()
-
-    first_iteration = False
